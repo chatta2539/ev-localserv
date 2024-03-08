@@ -21,29 +21,16 @@ import {
   Button,
   Avatar,
   Typography,
-  Pagination
+  Pagination,
+  Space,
+  Modal
 } from "antd";
 
-import { ToTopOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
 
+import UserRegistrationModal from "./UserRegistrationModal ";
+import EditUserModal from "./EditUserModal";
 
-import Echart from "../components/chart/EChart";
-import LineChart from "../components/chart/LineChart";
-
-// Images
-import ava1 from "../assets/images/logo-shopify.svg";
-import ava2 from "../assets/images/logo-atlassian.svg";
-import ava3 from "../assets/images/logo-slack.svg";
-import ava5 from "../assets/images/logo-jira.svg";
-import ava6 from "../assets/images/logo-invision.svg";
-import face from "../assets/images/face-1.jpg";
-import face2 from "../assets/images/face-2.jpg";
-import face3 from "../assets/images/face-3.jpg";
-import face4 from "../assets/images/face-4.jpg";
-import face5 from "../assets/images/face-5.jpeg";
-import face6 from "../assets/images/face-6.jpeg";
-import pencil from "../assets/images/pencil.svg";
 
 const { Title } = Typography;
 
@@ -65,241 +52,37 @@ const formProps = {
   },
 };
 // table code start
-const columns = [
-  {
-    title: "TIMESTAMP",
-    dataIndex: "timestamp",
-    key: "name",
-    width: "15%",
-  },
-  {
-    title: "DURATION TIME",
-    dataIndex: "durationtime",
-    key: "function",
-  },
-  {
-    title: "CONNECTOR",
-    dataIndex: "connector",
-    key: "connector",
-    
-  },
-  {
-    title: "ENERGY USAGE",
-    dataIndex: "energyusage",
-    key: "energyusage",
-  },
-  {
-    title: "ENERGY FEE",
-    dataIndex: "energyfee",
-    key: "energyfee",
-  },
-  {
-    title: "USERNAME",
-    dataIndex: "username",
-    key: "durationtime",
-  }
-];
 
-const data = [
-  {
-    key: "1",
-    timestamp: (
-      <>
-        <p>12/3/2024 13:45:21</p>
-      </>
-    ),
-    durationtime: (
-      <>
-        <p>34 min.</p>
-      </>
-    ),
-    connector: (
-      <>
-        <p>DC</p>
-      </>
-    ),
-    energyusage: (
-      <>
-        <p>4.34 kWh</p>
-      </>
-    ),
-    energyfee: (
-      <>
-        <p>฿ 543.32 </p>
-      </>
-    ),
-    username: (
-      <>
-        <p>เชษฐา นะรอฮีม</p>
-      </>
-    ),
-  },
-  {
-    key: "2",
-    timestamp: (
-      <>
-        <p>12/3/2024 13:45:21</p>
-      </>
-    ),
-    durationtime: (
-      <>
-        <p>34 min.</p>
-      </>
-    ),
-    connector: (
-      <>
-        <p>DC</p>
-      </>
-    ),
-    energyusage: (
-      <>
-        <p>4.34 kWh</p>
-      </>
-    ),
-    energyfee: (
-      <>
-        <p>฿ 543.32 </p>
-      </>
-    ),
-    username: (
-      <>
-        <p>เชษฐา นะรอฮีม</p>
-      </>
-    ),
-  },
-  {
-    key: "3",
-    timestamp: (
-      <>
-        <p>12/3/2024 13:45:21</p>
-      </>
-    ),
-    durationtime: (
-      <>
-        <p>34 min.</p>
-      </>
-    ),
-    connector: (
-      <>
-        <p>DC</p>
-      </>
-    ),
-    energyusage: (
-      <>
-        <p>4.34 kWh</p>
-      </>
-    ),
-    energyfee: (
-      <>
-        <p>฿ 543.32 </p>
-      </>
-    ),
-    username: (
-      <>
-        <p>เชษฐา นะรอฮีม</p>
-      </>
-    ),
-  },
-  {
-    key: "4",
-    timestamp: (
-      <>
-        <p>12/3/2024 13:45:21</p>
-      </>
-    ),
-    durationtime: (
-      <>
-        <p>34 min.</p>
-      </>
-    ),
-    connector: (
-      <>
-        <p>DC</p>
-      </>
-    ),
-    energyusage: (
-      <>
-        <p>4.34 kWh</p>
-      </>
-    ),
-    energyfee: (
-      <>
-        <p>฿ 543.32 </p>
-      </>
-    ),
-    username: (
-      <>
-        <p>เชษฐา นะรอฮีม</p>
-      </>
-    ),
-  },
-  {
-    key: "5",
-    timestamp: (
-      <>
-        <p>12/3/2024 13:45:21</p>
-      </>
-    ),
-    durationtime: (
-      <>
-        <p>34 min.</p>
-      </>
-    ),
-    connector: (
-      <>
-        <p>DC</p>
-      </>
-    ),
-    energyusage: (
-      <>
-        <p>4.34 kWh</p>
-      </>
-    ),
-    energyfee: (
-      <>
-        <p>฿ 543.32 </p>
-      </>
-    ),
-    username: (
-      <>
-        <p>เชษฐา นะรอฮีม</p>
-      </>
-    ),
-  },
-  {
-    key: "6",
-    timestamp: (
-      <>
-        <p>12/3/2024 13:45:21</p>
-      </>
-    ),
-    durationtime: (
-      <>
-        <p>34 min.</p>
-      </>
-    ),
-    connector: (
-      <>
-        <p>DC</p>
-      </>
-    ),
-    energyusage: (
-      <>
-        <p>4.34 kWh</p>
-      </>
-    ),
-    energyfee: (
-      <>
-        <p>฿ 543.32 </p>
-      </>
-    ),
-    username: (
-      <>
-        <p>เชษฐา นะรอฮีม</p>
-      </>
-    ),
-  }
-];
+
+const getRandomString = () => {
+  const options = ["DC", "AC"];
+  const randomIndex = Math.floor(Math.random() * options.length);
+  return options[randomIndex];
+};
+const getRandomStatus = () => {
+  const options = ["ACTIVE", "INACTIVE"];
+  const randomIndex = Math.floor(Math.random() * options.length);
+  return options[randomIndex];
+};
+
+const getRandomNumber = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+const data = [];
+for (let i = 0; i < 46; i++) {
+  data.push({
+    // timestamp: "12/3/2024 13:45:21",
+    // durationtime: `${getRandomNumber(20, 90)} min.`,
+    // connector: getRandomString(),
+    // energyusage: (getRandomNumber(20000, 30000)) / 100 + " kWh",
+    // energyfee: "฿ " + (getRandomNumber(40000, 80000)) / 100,
+    username: `Raeh Chester ${i}`,
+    phone: `098${(getRandomNumber(1000000, 9999099))}`,
+    status: getRandomStatus()
+  });
+}
+
 const download = [
   <svg
     width="15"
@@ -318,29 +101,110 @@ const download = [
   </svg>,
 ];
 
+
+
+
 function History() {
-  const onChange = (e) => console.log(`radio checked:${e.target.value}`);
+  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false); // State to control the visibility of the modal
+  const [editModalVisible, setEditModalVisible] = useState(false);
+  const [selectedUserData, setSelectedUserData] = useState(null);
+
+  const columns = [
+    {
+      title: "USERNAME",
+      dataIndex: "username",
+      key: "durationtime",
+
+    },
+    {
+      title: "PHONE",
+      dataIndex: "phone",
+      key: "function",
+    },
+    {
+      title: "STATUS",
+      dataIndex: "status",
+      key: "connector",
+
+    },
+    {
+      title: 'Action',
+      dataIndex: '',
+      key: 'action',
+      render: (_, record) => (
+        <Space>
+          <Typography.Link onClick={() => openEditModal(record)}>Edit</Typography.Link>
+          <Typography.Link onClick={() => confirmDeleteUser(record)}>Delete</Typography.Link>
+        </Space>
+      ),
+    },
+  ];
+
+  const start = () => {
+    setLoading(true);
+    // ajax request after empty completing
+    setTimeout(() => {
+      setSelectedRowKeys([]);
+      setLoading(false);
+    }, 1000);
+  };
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
+  const handleRegister = (formData) => {
+    // Handle user registration logic here
+    console.log('Registering user:', formData);
+    // You can make API calls or perform any necessary actions here
+    closeModal(); // Close the modal after registration
+  };
+
+  const openEditModal = (record) => {
+    setSelectedUserData(record);
+    setEditModalVisible(true);
+  };
+
+  const closeEditModal = () => {
+    setEditModalVisible(false);
+  };
+
+  const handleEdit = (formData) => {
+    // Handle user registration logic here
+    console.log('Editing user:', formData);
+    // You can make API calls or perform any necessary actions here
+    closeModal(); // Close the modal after registration
+  };
+
+  const confirmDeleteUser = (record) => {
+    Modal.confirm({
+      title: 'Delete User',
+      content: `Are you sure you want to delete user ${record.username} Phone : ${record.phone} ?`,
+      onOk() {
+        // Add your deletion logic here
+        console.log('Deleting user:', record);
+      },
+    });
+  };
 
   return (
     <>
       <div className="tabled">
-
-        <Col xs={24} sm={24} md={12} lg={12} xl={24} className="mb-24">
-          <Card bordered={false} className="criclebox h-full">
-            <LineChart />
-          </Card>
-        </Col>
         <Row gutter={[24, 0]}>
-
-
-          <Col xs="24" xl={24}>
+          <Col xs={24} xl={24}>
             <Card
               bordered={false}
               className="criclebox tablespace mb-24"
-              title="Authors Table"
+              title="History Table"
               extra={
                 <>
-                  {[<Button type="primary" className="invoice-list">{download} CSV</Button>]}
+                  {[<Button type="primary" className="invoice-list" onClick={openModal}> ADD USER</Button>]}
                 </>
               }
             >
@@ -348,26 +212,30 @@ function History() {
                 <Table
                   columns={columns}
                   dataSource={data}
-                  pagination={false}
+                  pagination={{ position: ['none', 'bottomRight'] }}
                   className="ant-border-space"
-                />
-              </div>
-              {/* uploadfile pb-15 shadow-none */}
-              <div className="pagination">
-
-                <Pagination
-                  total={85}
-                  showSizeChanger
-                  showQuickJumper
-                  showTotal={(total) => `Total ${total} items`}
+                  scroll={{
+                    y: 700,
+                  }}
                 />
               </div>
             </Card>
-            
           </Col>
         </Row>
       </div>
 
+      <UserRegistrationModal
+        visible={modalVisible}
+        onCancel={closeModal}
+        onRegister={handleRegister}
+      />
+
+      <EditUserModal
+        visible={editModalVisible}
+        onCancel={closeEditModal}
+        onEdit={handleEdit}
+        userData={selectedUserData}
+      />
     </>
   );
 }

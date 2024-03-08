@@ -1136,6 +1136,7 @@ span.blue {
   font-weight: 600;
 }
 .table-responsive {
+  padding: 0px 20px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -1910,6 +1911,7 @@ body {
 }
 .header-solid .ant-card-head {
   border-bottom: 0;
+  
 }
 .card-signup .sign-up-gateways .ant-btn img {
   width: 20px;

@@ -20,6 +20,7 @@ import SignIn from "./pages/SignIn";
 import Main from "./components/layout/Main";
 import Settings from "./pages/Settings";
 import Test1 from "./pages/Test1";
+import UserManagement from "./pages/UserManagement";
 import "antd/dist/antd.css";
 import "./assets/styles/main.css";
 import "./assets/styles/responsive.css";
@@ -33,7 +34,7 @@ function App() {
         <Main>
           <Route exact path="/dashboard" component={Home} />
           <Route exact path="/history" component={History} />
-          <Route exact path="/billing" component={Billing} />
+          <Route exact path="/user" component={UserManagement} />
           <Route exact path="/Settings" component={Settings} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/test1" component={Test1} />

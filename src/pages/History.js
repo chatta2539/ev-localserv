@@ -26,7 +26,7 @@ import {
 
 import { ToTopOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-
+import React, { useState } from 'react';
 
 import Echart from "../components/chart/EChart";
 import LineChart from "../components/chart/LineChart";
@@ -81,7 +81,7 @@ const columns = [
     title: "CONNECTOR",
     dataIndex: "connector",
     key: "connector",
-    
+
   },
   {
     title: "ENERGY USAGE",
@@ -97,209 +97,232 @@ const columns = [
     title: "USERNAME",
     dataIndex: "username",
     key: "durationtime",
+    
   }
 ];
 
-const data = [
-  {
-    key: "1",
-    timestamp: (
-      <>
-        <p>12/3/2024 13:45:21</p>
-      </>
-    ),
-    durationtime: (
-      <>
-        <p>34 min.</p>
-      </>
-    ),
-    connector: (
-      <>
-        <p>DC</p>
-      </>
-    ),
-    energyusage: (
-      <>
-        <p>4.34 kWh</p>
-      </>
-    ),
-    energyfee: (
-      <>
-        <p>฿ 543.32 </p>
-      </>
-    ),
-    username: (
-      <>
-        <p>เชษฐา นะรอฮีม</p>
-      </>
-    ),
-  },
-  {
-    key: "2",
-    timestamp: (
-      <>
-        <p>12/3/2024 13:45:21</p>
-      </>
-    ),
-    durationtime: (
-      <>
-        <p>34 min.</p>
-      </>
-    ),
-    connector: (
-      <>
-        <p>DC</p>
-      </>
-    ),
-    energyusage: (
-      <>
-        <p>4.34 kWh</p>
-      </>
-    ),
-    energyfee: (
-      <>
-        <p>฿ 543.32 </p>
-      </>
-    ),
-    username: (
-      <>
-        <p>เชษฐา นะรอฮีม</p>
-      </>
-    ),
-  },
-  {
-    key: "3",
-    timestamp: (
-      <>
-        <p>12/3/2024 13:45:21</p>
-      </>
-    ),
-    durationtime: (
-      <>
-        <p>34 min.</p>
-      </>
-    ),
-    connector: (
-      <>
-        <p>DC</p>
-      </>
-    ),
-    energyusage: (
-      <>
-        <p>4.34 kWh</p>
-      </>
-    ),
-    energyfee: (
-      <>
-        <p>฿ 543.32 </p>
-      </>
-    ),
-    username: (
-      <>
-        <p>เชษฐา นะรอฮีม</p>
-      </>
-    ),
-  },
-  {
-    key: "4",
-    timestamp: (
-      <>
-        <p>12/3/2024 13:45:21</p>
-      </>
-    ),
-    durationtime: (
-      <>
-        <p>34 min.</p>
-      </>
-    ),
-    connector: (
-      <>
-        <p>DC</p>
-      </>
-    ),
-    energyusage: (
-      <>
-        <p>4.34 kWh</p>
-      </>
-    ),
-    energyfee: (
-      <>
-        <p>฿ 543.32 </p>
-      </>
-    ),
-    username: (
-      <>
-        <p>เชษฐา นะรอฮีม</p>
-      </>
-    ),
-  },
-  {
-    key: "5",
-    timestamp: (
-      <>
-        <p>12/3/2024 13:45:21</p>
-      </>
-    ),
-    durationtime: (
-      <>
-        <p>34 min.</p>
-      </>
-    ),
-    connector: (
-      <>
-        <p>DC</p>
-      </>
-    ),
-    energyusage: (
-      <>
-        <p>4.34 kWh</p>
-      </>
-    ),
-    energyfee: (
-      <>
-        <p>฿ 543.32 </p>
-      </>
-    ),
-    username: (
-      <>
-        <p>เชษฐา นะรอฮีม</p>
-      </>
-    ),
-  },
-  {
-    key: "6",
-    timestamp: (
-      <>
-        <p>12/3/2024 13:45:21</p>
-      </>
-    ),
-    durationtime: (
-      <>
-        <p>34 min.</p>
-      </>
-    ),
-    connector: (
-      <>
-        <p>DC</p>
-      </>
-    ),
-    energyusage: (
-      <>
-        <p>4.34 kWh</p>
-      </>
-    ),
-    energyfee: (
-      <>
-        <p>฿ 543.32 </p>
-      </>
-    ),
-    username: (
-      <>
-        <p>เชษฐา นะรอฮีม</p>
-      </>
-    ),
-  }
-];
+const getRandomString = () => {
+  const options = ["DC", "AC"];
+  const randomIndex = Math.floor(Math.random() * options.length);
+  return options[randomIndex];
+};
+
+const getRandomNumber = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+const data = [];
+for (let i = 0; i < 46; i++) {
+  data.push({
+    timestamp: "12/3/2024 13:45:21",
+    durationtime: `${getRandomNumber(20, 90)} min.`,
+    connector: getRandomString(),
+    energyusage: (getRandomNumber(20000, 30000))/100 + " kWh",
+    energyfee: "฿ " + (getRandomNumber(40000, 80000))/100,
+    username: `Raeh Chester ${i}`
+  });
+}
+
+// const data = [
+//   {
+//     key: "1",
+//     timestamp: (
+//       <>
+//         <p>12/3/2024 13:45:21</p>
+//       </>
+//     ),
+//     durationtime: (
+//       <>
+//         <p>34 min.</p>
+//       </>
+//     ),
+//     connector: (
+//       <>
+//         <p>DC</p>
+//       </>
+//     ),
+//     energyusage: (
+//       <>
+//         <p>4.34 kWh</p>
+//       </>
+//     ),
+//     energyfee: (
+//       <>
+//         <p>฿ 543.32 </p>
+//       </>
+//     ),
+//     username: (
+//       <>
+//         <p>เชษฐา นะรอฮีม</p>
+//       </>
+//     ),
+//   },
+//   {
+//     key: "2",
+//     timestamp: (
+//       <>
+//         <p>12/3/2024 13:45:21</p>
+//       </>
+//     ),
+//     durationtime: (
+//       <>
+//         <p>34 min.</p>
+//       </>
+//     ),
+//     connector: (
+//       <>
+//         <p>DC</p>
+//       </>
+//     ),
+//     energyusage: (
+//       <>
+//         <p>4.34 kWh</p>
+//       </>
+//     ),
+//     energyfee: (
+//       <>
+//         <p>฿ 543.32 </p>
+//       </>
+//     ),
+//     username: (
+//       <>
+//         <p>เชษฐา นะรอฮีม</p>
+//       </>
+//     ),
+//   },
+//   {
+//     key: "3",
+//     timestamp: (
+//       <>
+//         <p>12/3/2024 13:45:21</p>
+//       </>
+//     ),
+//     durationtime: (
+//       <>
+//         <p>34 min.</p>
+//       </>
+//     ),
+//     connector: (
+//       <>
+//         <p>DC</p>
+//       </>
+//     ),
+//     energyusage: (
+//       <>
+//         <p>4.34 kWh</p>
+//       </>
+//     ),
+//     energyfee: (
+//       <>
+//         <p>฿ 543.32 </p>
+//       </>
+//     ),
+//     username: (
+//       <>
+//         <p>เชษฐา นะรอฮีม</p>
+//       </>
+//     ),
+//   },
+//   {
+//     key: "4",
+//     timestamp: (
+//       <>
+//         <p>12/3/2024 13:45:21</p>
+//       </>
+//     ),
+//     durationtime: (
+//       <>
+//         <p>34 min.</p>
+//       </>
+//     ),
+//     connector: (
+//       <>
+//         <p>DC</p>
+//       </>
+//     ),
+//     energyusage: (
+//       <>
+//         <p>4.34 kWh</p>
+//       </>
+//     ),
+//     energyfee: (
+//       <>
+//         <p>฿ 543.32 </p>
+//       </>
+//     ),
+//     username: (
+//       <>
+//         <p>เชษฐา นะรอฮีม</p>
+//       </>
+//     ),
+//   },
+//   {
+//     key: "5",
+//     timestamp: (
+//       <>
+//         <p>12/3/2024 13:45:21</p>
+//       </>
+//     ),
+//     durationtime: (
+//       <>
+//         <p>34 min.</p>
+//       </>
+//     ),
+//     connector: (
+//       <>
+//         <p>DC</p>
+//       </>
+//     ),
+//     energyusage: (
+//       <>
+//         <p>4.34 kWh</p>
+//       </>
+//     ),
+//     energyfee: (
+//       <>
+//         <p>฿ 543.32 </p>
+//       </>
+//     ),
+//     username: (
+//       <>
+//         <p>เชษฐา นะรอฮีม</p>
+//       </>
+//     ),
+//   },
+//   {
+//     key: "6",
+//     timestamp: (
+//       <>
+//         <p>12/3/2024 13:45:21</p>
+//       </>
+//     ),
+//     durationtime: (
+//       <>
+//         <p>34 min.</p>
+//       </>
+//     ),
+//     connector: (
+//       <>
+//         <p>DC</p>
+//       </>
+//     ),
+//     energyusage: (
+//       <>
+//         <p>4.34 kWh</p>
+//       </>
+//     ),
+//     energyfee: (
+//       <>
+//         <p>฿ 543.32 </p>
+//       </>
+//     ),
+//     username: (
+//       <>
+//         <p>เชษฐา นะรอฮีม</p>
+//       </>
+//     ),
+//   }
+// ];
 const download = [
   <svg
     width="15"
@@ -318,8 +341,27 @@ const download = [
   </svg>,
 ];
 
+
 function History() {
-  const onChange = (e) => console.log(`radio checked:${e.target.value}`);
+  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const start = () => {
+    setLoading(true);
+    // ajax request after empty completing
+    setTimeout(() => {
+      setSelectedRowKeys([]);
+      setLoading(false);
+    }, 1000);
+  };
+  const onSelectChange = (newSelectedRowKeys) => {
+    console.log('selectedRowKeys changed: ', newSelectedRowKeys);
+    setSelectedRowKeys(newSelectedRowKeys);
+  };
+  const rowSelection = {
+    selectedRowKeys,
+    onChange: onSelectChange,
+  };
+  const hasSelected = selectedRowKeys.length > 0;
 
   return (
     <>
@@ -331,13 +373,12 @@ function History() {
           </Card>
         </Col>
         <Row gutter={[24, 0]}>
-
-
-          <Col xs="24" xl={24}>
+        <Col xs="24" xl={24} >
+        
             <Card
               bordered={false}
               className="criclebox tablespace mb-24"
-              title="Authors Table"
+              title="History Table"
               extra={
                 <>
                   {[<Button type="primary" className="invoice-list">{download} CSV</Button>]}
@@ -345,26 +386,26 @@ function History() {
               }
             >
               <div className="table-responsive">
+              
                 <Table
                   columns={columns}
                   dataSource={data}
-                  pagination={false}
+                  pagination={{ position: ['none', 'bottomRight'] }}
                   className="ant-border-space"
-                />
-              </div>
-              {/* uploadfile pb-15 shadow-none */}
-              <div className="pagination">
-
-                <Pagination
-                  total={85}
-                  showSizeChanger
-                  showQuickJumper
-                  showTotal={(total) => `Total ${total} items`}
+                  scroll={{
+                    y: 400,
+                  }}
                 />
               </div>
             </Card>
             
+
           </Col>
+
+
+         
+
+
         </Row>
       </div>
 
