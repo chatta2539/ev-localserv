@@ -11,35 +11,55 @@
 */
 
 import ReactApexChart from "react-apexcharts";
-import { Typography } from "antd";
+import { Typography, DatePicker } from "antd";
 import { MinusOutlined } from "@ant-design/icons";
 import lineChart from "./configs/lineChart";
 
+
+const onChange = (date, dateString) => {
+  console.log(date, dateString[0]);
+};
+
+
 function LineChart() {
   const { Title, Paragraph } = Typography;
+  const { RangePicker } = DatePicker;
 
   return (
     <>
       <div className="linechart">
         <div>
-          <Title level={5}>Active Users</Title>
-          <Paragraph className="lastweek">
+        <li><RangePicker 
+                  onChange={onChange} 
+                  style={{
+                    
+                    height: "auto",
+                    width: "auto",
+                    borderRadius: "10px",
+                    cursor: "pointer",
+                    fontSize: "17px",
+                    margin: "5px",
+                    padding: "7px",
+                    
+                  }}/></li>
+          {/* <Title level={3}>Income</Title> */}
+          {/* <Paragraph className="lastweek">
             than last week <span className="bnb2">+30%</span>
-          </Paragraph>
+          </Paragraph> */}
         </div>
         <div className="sales">
           <ul>
-            <li>{<MinusOutlined />} Traffic</li>
-            <li>{<MinusOutlined />} Sales</li>
+
+            
           </ul>
         </div>
       </div>
 
+
       <ReactApexChart
-        className="full-width"
         options={lineChart.options}
         series={lineChart.series}
-        type="area"
+        type="bar"
         height={350}
         width={"100%"}
       />

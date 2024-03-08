@@ -1008,6 +1008,7 @@ button.ant-btn.bell strong {
   border-radius: 8px;
 }
 
+
 .chart-vistior {
   margin-top: 30px;
 }
@@ -1207,6 +1208,18 @@ span.blue {
   color: #141414;
   border-radius: 10px;
 }
+
+.pagination{
+  text-align: right;
+  margin-right: 10px;
+  margin-top: 20px;
+  padding-bottom: 10px;
+  border-radius: "10px";
+  border-radius: 10px;
+  
+
+}
+
 .uploadfile {
   margin-top: 15px;
 }

@@ -33,8 +33,8 @@ import {
 } from "@ant-design/icons";
 import Paragraph from "antd/lib/typography/Paragraph";
 
-import Echart from "../components/chart/EChart";
-import LineChart from "../components/chart/LineChart";
+import Echart from "../../components/chart/EChart";
+import LineChart from "../../components/chart/LineChart";
 
 import ava1 from "../assets/images/logo-shopify.svg";
 import ava2 from "../assets/images/logo-atlassian.svg";
