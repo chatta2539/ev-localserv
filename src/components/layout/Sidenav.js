@@ -220,7 +220,9 @@ function Sidenav({ color }) {
             <span className="label">Settings</span>
           </NavLink>
         </Menu.Item>
-        <Menu.Item key="5">
+
+
+        {/* <Menu.Item key="5">
           <NavLink to="/test1">
             <span
               className="icon"
@@ -232,7 +234,11 @@ function Sidenav({ color }) {
             </span>
             <span className="label">Test</span>
           </NavLink>
-        </Menu.Item>
+        </Menu.Item> */}
+
+
+
+
         {/* <Menu.Item className="menu-item-header" key="5">
           Account Pages
         </Menu.Item>

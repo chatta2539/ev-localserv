@@ -42,18 +42,6 @@ const UserRegistrationModal = ({ visible, onCancel, onRegister }) => {
         size='Large'
         style={{maxWidth: 600,}}
       >
-        {/* <Form.Item
-          name="firstname"
-          label="Firstname"
-          rules={[{ required: true, message: 'Please input your Firstname!' }]}>
-          <Input />
-        </Form.Item>
-        <Form.Item
-          name="lastname"
-          label="Lastname"
-          rules={[{ required: true, message: 'Please input your Lastname!' }]}>
-          <Input />
-        </Form.Item> */}
         <Form.Item
           name="username"
           label="Username"

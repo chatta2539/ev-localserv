@@ -1938,7 +1938,7 @@ body {
 .text-muted {
   color: #8c8c8c;
 }
-.ant-input {
+.ant-input  {
   border-radius: 6px;
 }
 .ant-input {
@@ -1946,7 +1946,7 @@ body {
   color: #8c8c8c;
 }
 .ant-input {
-  height: 40px;
+  height: auto;
   border: 1px solid #d9d9d9;
 }
 .font-bold {
@@ -2959,7 +2959,7 @@ section.ant-layout.ant-layout-has-sider.layout-dashboard.layout-profile
 
 .layout-dashboard.layout-dashboard-rtl span.ant-input-prefix {
   margin-right: 0px;
-  margin-left: 4px;
+  margin-left: 0px;
 }
 
 .layout-dashboard-rtl .ant-drawer-left .ant-drawer-content-wrapper {
